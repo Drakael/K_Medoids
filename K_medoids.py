@@ -3,7 +3,7 @@ from scipy.spatial.distance import cityblock
 import matplotlib.pyplot as plt
 
 
-class K_Medoid:
+class K_Medoids:
     def __init__(self, vector_list, C, iterations=100):
         self.vector_list = vector_list
         self.C = C
@@ -69,12 +69,12 @@ class K_Medoid:
 
 if __name__ == '__main__':
     data = np.random.uniform(0, 10, (70, 2))
-    kmed = K_Medoid(data, 3, 300)
+    kmed = K_Medoids(data, 5, 300)
     kmed.iterate()
     print('data', data)
     print('kmed.medoids', kmed.medoids)
     print('kmed.elem2cluster', kmed.elem2cluster)
-    colors = ['r', 'g', 'b']
+    colors = ['r', 'g', 'b', 'c', 'm']
     color_list = [colors[cluster] for cluster in kmed.elem2cluster]
     plt.figure()
     plt.scatter(data[:, 0], data[:, 1], color=color_list)
