@@ -9,8 +9,12 @@ class K_Medoids:
         self.C = C
         self.iterations = iterations
         self.medoids = list()
+        used_ids = set()
         for i in range(C):
             rand_id = np.random.randint(len(self.vector_list))
+            while rand_id in used_ids:
+                rand_id = np.random.randint(len(self.vector_list))
+            used_ids.add(rand_id)
             self.medoids.append(self.vector_list[rand_id])
         self.previous_medoids = None
         self.elem2cluster = list()
